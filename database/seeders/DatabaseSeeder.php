@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Car;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +15,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Car::factory()->create([
+            'brand' => 'BMW', 'model' => 'M4', 'slug' => 'bmw-m4',
+            'content' => '# Titre
+- Item 1
+- Item 2
+- Item 3',
+            'image' => 'cars/bmw.jpg', 'state' => true,
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Car::factory()->create([
+            'brand' => 'Porsche', 'model' => '911 Turbo S', 'slug' => 'porsche-911-turbo-s', 'image' => 'cars/porsche.jpg', 'state' => true,
+        ]);
+
+        Car::factory()->create([
+            'brand' => 'Ferrari', 'model' => 'Modena', 'slug' => 'ferrari-modena', 'image' => 'cars/ferrari.jpg', 'state' => true,
+        ]);
     }
 }
