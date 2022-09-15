@@ -12,4 +12,13 @@ class CarController extends Controller
             'cars' => Car::all(),
         ]);
     }
+
+    public function show(Car $car, $slug)
+    {
+        abort_if($car->slug !== $slug, 404);
+
+        return view('cars.show', [
+            'car' => $car,
+        ]);
+    }
 }
