@@ -1,6 +1,12 @@
 @extends('layouts.base')
 
 @section('content')
+    <div class="text-center mb-12">
+        <a class="inline-block text-xl bg-gray-200 text-gray-900 border font-semibold px-6 py-3 rounded-md shadow-md hover:bg-transparent hover:text-white duration-200" href="{{ route('cars.create') }}">
+            Créer une voiture
+        </a>
+    </div>
+
     <div class="flex flex-wrap -mx-3">
         @forelse ($cars as $car)
             <div class="w-full md:w-1/2 lg:w-1/3">

@@ -20,3 +20,5 @@ Route::get('/', function () {
 
 Route::get('/voitures', [CarController::class, 'index'])->name('cars.index');
 Route::get('/voiture/{car}-{slug}', [CarController::class, 'show'])->name('cars.show');
+Route::get('/voiture/creer', [CarController::class, 'create'])->name('cars.create');
+Route::post('/voiture', [CarController::class, 'store'])->name('cars.store');

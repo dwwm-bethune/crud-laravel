@@ -26,7 +26,7 @@
                         <a class="border-b hover:border-gray-300 duration-300 pb-2 {{ request()->routeIs('cars.index') ? 'border-gray-300' : 'border-transparent'}}" href="{{ route('cars.index') }}">Voitures</a>
                     </li>
                     <li>
-                        <a class="border-b hover:border-gray-300 duration-300 pb-2 {{ request()->routeIs('cars.create') ? 'border-gray-300' : 'border-transparent'}}" href="#">Créer</a>
+                        <a class="border-b hover:border-gray-300 duration-300 pb-2 {{ request()->routeIs('cars.create') ? 'border-gray-300' : 'border-transparent'}}" href="{{ route('cars.create') }}">Créer</a>
                     </li>
                 </ul>
             </div>

@@ -10,6 +10,8 @@ class Car extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function name(): Attribute
     {
         return Attribute::make(function () {
