@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CarController;
+use App\Models\Car;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', [
+        'cars' => Car::where('state', true)->limit(2)->latest()->get(),
+    ]);
 })->name('home');
 
 Route::get('/voitures', [CarController::class, 'index'])->name('cars.index');

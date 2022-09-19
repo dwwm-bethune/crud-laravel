@@ -11,13 +11,15 @@ class CarController extends Controller
     public function index()
     {
         return view('cars.index', [
-            'cars' => Car::all(),
+            'cars' => Car::where('state', true)->get(),
         ]);
     }
 
     public function show(Car $car, $slug)
     {
+        // Le slug de la voiture doit correspondre à ce qui est dans l'URL
         abort_if($car->slug !== $slug, 404);
+        abort_unless($car->state, 404, 'VOITURE DESACTIVEE');
 
         return view('cars.show', [
             'car' => $car,
@@ -39,7 +41,10 @@ class CarController extends Controller
             'state' => 'boolean',
         ]);
 
+        // $request->boolean('state') => On est sûr d'avoir true ou false
+        // que la checkboxe soit cochée ou non...
         $validated['state'] = $request->boolean('state');
+        // Peugeot 206 => peugeot-206
         $validated['slug'] = str($request->brand.'-'.$request->model)->slug();
         $validated['image'] = '/storage/'.$request->file('image')->store('cars');
 
