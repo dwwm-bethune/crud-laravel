@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class CarController extends Controller
@@ -47,6 +48,7 @@ class CarController extends Controller
         // Peugeot 206 => peugeot-206
         $validated['slug'] = str($request->brand.'-'.$request->model)->slug();
         $validated['image'] = '/storage/'.$request->file('image')->store('cars');
+        $validated['user_id'] = Auth::user()->id;
 
         Car::create($validated);
 

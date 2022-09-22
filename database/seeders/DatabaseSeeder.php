@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->create([
+        $user = User::factory()->create([
             'name' => 'Fiorella',
             'email' => 'fiorella@boxydev.com',
         ]);
@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
 
         Car::factory()->create([
             'brand' => 'Ferrari', 'model' => 'Modena', 'slug' => 'ferrari-modena', 'image' => 'cars/ferrari.jpg', 'state' => true,
+            'user_id' => $user,
         ]);
     }
 }

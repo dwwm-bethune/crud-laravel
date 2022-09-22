@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('content');
             $table->string('image');
             $table->boolean('state');
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

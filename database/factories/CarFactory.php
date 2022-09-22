@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -23,6 +24,7 @@ class CarFactory extends Factory
             'content' => fake()->text(),
             'image' => fake()->imageUrl(),
             'state' => fake()->boolean(),
+            'user_id' => User::factory(),
         ];
     }
 }
