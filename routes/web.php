@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\ProfilController;
 use App\Models\Car;
 use Illuminate\Support\Facades\Route;
 
@@ -37,3 +38,6 @@ Route::get('/logout', [LoginController::class, 'destroy'])->name('logout')->midd
 
 Route::get('/inscription', [RegisterController::class, 'index'])->name('register')->middleware('guest');
 Route::post('/inscription', [RegisterController::class, 'store'])->middleware('guest');
+
+Route::get('/profil', [ProfilController::class, 'index'])->name('profile')->middleware('auth');
+Route::put('/profil', [ProfilController::class, 'update'])->middleware('auth');

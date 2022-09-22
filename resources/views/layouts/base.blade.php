@@ -33,7 +33,7 @@
 
                     @if (Auth::user())
                     <div>
-                        <a href="">
+                        <a href="{{ route('profile') }}">
                             {{ Auth::user()->name }}
                         </a>
                     </div>
