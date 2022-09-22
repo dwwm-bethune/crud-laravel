@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\ProfilController;
 use App\Models\Car;
@@ -38,6 +40,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])->name('logout')->midd
 
 Route::get('/inscription', [RegisterController::class, 'index'])->name('register')->middleware('guest');
 Route::post('/inscription', [RegisterController::class, 'store'])->middleware('guest');
+
+Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('password.request')->middleware('guest');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'store'])->name('password.email')->middleware('guest');
+Route::get('/reset-password/{token}', [ResetPasswordController::class, 'index'])->name('password.reset')->middleware('guest');
+Route::post('/reset-password', [ResetPasswordController::class, 'store'])->name('password.update')->middleware('guest');
 
 Route::get('/profil', [ProfilController::class, 'index'])->name('profile')->middleware('auth');
 Route::put('/profil', [ProfilController::class, 'update'])->middleware('auth');

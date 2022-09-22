@@ -36,7 +36,7 @@
 
             <div>
                 <button class="px-6 py-2 bg-blue-500 text-white shadow rounded hover:bg-blue-700">Connexion</button>
-                <a class="block text-xs mt-4" href="">Réinitialiser le mot de passe</a>
+                <a class="block text-xs mt-4" href="{{ route('password.request') }}">Réinitialiser le mot de passe</a>
             </div>
         </form>
     </div>

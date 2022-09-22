@@ -38,8 +38,9 @@
                 <input type="password" name="password_confirmation" id="password_confirmation" class="text-gray-900 w-full rounded-lg mb-2">
             </div>
 
-            <div>
+            <div class="flex justify-between">
                 <button class="px-6 py-2 bg-blue-500 text-white shadow rounded hover:bg-blue-700">Modifier</button>
+                <a class="px-6 py-2 bg-red-500 text-white shadow rounded hover:bg-red-700" href="{{ route('logout') }}">Déconnexion</a>
             </div>
         </form>
     </div>
