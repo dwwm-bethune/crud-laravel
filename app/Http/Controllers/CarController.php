@@ -57,6 +57,8 @@ class CarController extends Controller
 
     public function edit(Car $car)
     {
+        $this->authorize('update', $car);
+
         return view('cars.edit', [
             'car' => $car,
         ]);
@@ -64,6 +66,8 @@ class CarController extends Controller
 
     public function update(Car $car, Request $request)
     {
+        $this->authorize('update', $car);
+
         $validated = $request->validate([
             'brand' => 'required',
             'model' => 'required',
@@ -90,6 +94,8 @@ class CarController extends Controller
 
     public function destroy(Car $car)
     {
+        $this->authorize('delete', $car);
+
         Storage::delete(str($car->image)->remove('/storage/'));
         $car->delete();
 

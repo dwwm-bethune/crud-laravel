@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $user = User::factory()->create([
             'name' => 'Fiorella',
             'email' => 'fiorella@boxydev.com',
+            'is_admin' => true,
         ]);
 
         Car::factory()->create([
