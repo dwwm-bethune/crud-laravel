@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CarController;
 use App\Models\Car;
 use Illuminate\Support\Facades\Route;
@@ -33,3 +34,6 @@ Route::delete('/voiture/{car}', [CarController::class, 'destroy'])->name('cars.d
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'store']);
 Route::get('/logout', [LoginController::class, 'destroy'])->name('logout')->middleware('auth');
+
+Route::get('/inscription', [RegisterController::class, 'index'])->name('register')->middleware('guest');
+Route::post('/inscription', [RegisterController::class, 'store'])->middleware('guest');
