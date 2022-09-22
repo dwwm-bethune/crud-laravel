@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Car;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,6 +16,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        User::factory()->create([
+            'name' => 'Fiorella',
+            'email' => 'fiorella@boxydev.com',
+        ]);
+
         Car::factory()->create([
             'brand' => 'BMW', 'model' => 'M4', 'slug' => 'bmw-m4',
             'content' => '# Titre

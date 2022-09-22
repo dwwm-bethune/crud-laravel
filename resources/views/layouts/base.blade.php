@@ -14,21 +14,40 @@
     <header class="mb-8">
         <div class="max-w-6xl mx-auto px-3">
             <div class="flex justify-between items-center">
-                <h1 class="text-2xl font-bold py-6">
+                <h1 class="text-2xl font-bold py-6 mr-12">
                     <a href="#">CRUD</a>
                 </h1>
 
-                <ul class="flex space-x-6">
-                    <li>
-                        <a class="border-b hover:border-gray-300 duration-300 pb-2 {{ request()->routeIs('home') ? 'border-gray-300' : 'border-transparent'}}" href="{{ route('home') }}">Accueil</a>
-                    </li>
-                    <li>
-                        <a class="border-b hover:border-gray-300 duration-300 pb-2 {{ request()->routeIs('cars.index') ? 'border-gray-300' : 'border-transparent'}}" href="{{ route('cars.index') }}">Voitures</a>
-                    </li>
-                    <li>
-                        <a class="border-b hover:border-gray-300 duration-300 pb-2 {{ request()->routeIs('cars.create') ? 'border-gray-300' : 'border-transparent'}}" href="{{ route('cars.create') }}">Créer</a>
-                    </li>
-                </ul>
+                <div class="flex justify-between grow">
+                    <ul class="flex space-x-6">
+                        <li>
+                            <a class="border-b hover:border-gray-300 duration-300 pb-2 {{ request()->routeIs('home') ? 'border-gray-300' : 'border-transparent'}}" href="{{ route('home') }}">Accueil</a>
+                        </li>
+                        <li>
+                            <a class="border-b hover:border-gray-300 duration-300 pb-2 {{ request()->routeIs('cars.index') ? 'border-gray-300' : 'border-transparent'}}" href="{{ route('cars.index') }}">Voitures</a>
+                        </li>
+                        <li>
+                            <a class="border-b hover:border-gray-300 duration-300 pb-2 {{ request()->routeIs('cars.create') ? 'border-gray-300' : 'border-transparent'}}" href="{{ route('cars.create') }}">Créer</a>
+                        </li>
+                    </ul>
+
+                    @if (Auth::user())
+                    <div>
+                        <a href="">
+                            {{ Auth::user()->name }}
+                        </a>
+                    </div>
+                    @else
+                    <ul class="flex space-x-6">
+                        <li>
+                            <a class="border-b hover:border-gray-300 duration-300 pb-2 {{ request()->routeIs('register') ? 'border-gray-300' : 'border-transparent'}}" href="{{ route('register') }}">Inscription</a>
+                        </li>
+                        <li>
+                            <a class="border-b hover:border-gray-300 duration-300 pb-2 {{ request()->routeIs('login') ? 'border-gray-300' : 'border-transparent'}}" href="{{ route('login') }}">Connexion</a>
+                        </li>
+                    </ul>
+                    @endif
+                </div>
             </div>
         </div>
     </header>
