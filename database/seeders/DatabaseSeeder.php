@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Car;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -16,11 +17,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $roleAdmin = Role::factory()->create(['name' => 'Administrateur']);
+        $roleUser = Role::factory()->create(['name' => 'Utilisateur']);
+
         $user = User::factory()->create([
             'name' => 'Fiorella',
             'email' => 'fiorella@boxydev.com',
             'is_admin' => true,
         ]);
+        $user->roles()->attach([$roleAdmin->id, $roleUser->id]);
+
+        $user = User::factory()->create([
+            'name' => 'Matthieu',
+            'email' => 'matthieu@boxydev.com',
+        ]);
+        $user->roles()->attach($roleUser);
 
         Car::factory()->create([
             'brand' => 'BMW', 'model' => 'M4', 'slug' => 'bmw-m4',

@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\UserController;
 use App\Models\Car;
 use Illuminate\Support\Facades\Route;
 
@@ -48,3 +49,7 @@ Route::post('/reset-password', [ResetPasswordController::class, 'store'])->name(
 
 Route::get('/profil', [ProfilController::class, 'index'])->name('profile')->middleware('auth');
 Route::put('/profil', [ProfilController::class, 'update'])->middleware('auth');
+
+Route::get('/users', [UserController::class, 'index'])->middleware('admin');
+Route::get('/users/{user}', [UserController::class, 'edit'])->name('users.edit');
+Route::put('/users/{user}', [UserController::class, 'update']);

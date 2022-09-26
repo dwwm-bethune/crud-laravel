@@ -22,6 +22,8 @@ class CarController extends Controller
         abort_if($car->slug !== $slug, 404);
         abort_unless($car->state, 404, 'VOITURE DESACTIVEE');
 
+        $this->authorize('view', $car);
+
         return view('cars.show', [
             'car' => $car,
         ]);
