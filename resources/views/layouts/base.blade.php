@@ -33,7 +33,8 @@
 
                     @if (Auth::user())
                     <div>
-                        <a href="{{ route('profile') }}">
+                        <a class="flex items-center" href="{{ route('profile') }}">
+                            <img class="h-8 w-8 rounded-full mr-3" src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}">
                             {{ Auth::user()->name }}
                         </a>
                     </div>
